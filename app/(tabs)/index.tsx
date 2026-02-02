@@ -175,7 +175,7 @@ export default function HomeScreen() {
 
           <View style={styles.videoCard}>
             <Image
-              source={require("@/assets/ronaldo.jpg")}
+              source={require("@/assets/ronaldo.png")}
               style={styles.videoThumbnail}
             />
 
