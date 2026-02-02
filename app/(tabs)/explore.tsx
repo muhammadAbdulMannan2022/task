@@ -70,7 +70,7 @@ export default function ExploreScreen() {
 
   return (
     <View style={styles.container}>
-      {/* Header */}
+     
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Explore</Text>
         <TouchableOpacity 
@@ -85,7 +85,7 @@ export default function ExploreScreen() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
       >
-        {/* Search Bar */}
+      
         <View style={styles.searchContainer}>
           <Ionicons name="search" size={20} color="#94A3B8" />
           <TextInput
@@ -98,7 +98,7 @@ export default function ExploreScreen() {
           </TouchableOpacity>
         </View>
 
-        {/* Filter Chips */}
+       
         <View style={styles.filterSection}>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.filterScroll}>
             {FILTERS.map((filter) => (
@@ -130,7 +130,7 @@ export default function ExploreScreen() {
           </View>
         </View>
 
-        {/* Bottom Spacer */}
+       
         <View style={{ height: 100 }} />
       </ScrollView>
     </View>
@@ -140,7 +140,7 @@ export default function ExploreScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FDFDFD", // Warm White
+    backgroundColor: "#FFFFFF", 
   },
   header: {
     flexDirection: "row",

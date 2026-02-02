@@ -14,8 +14,9 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: "#245550",
         headerShown: false,
+        sceneStyle: { backgroundColor: "#FFFFFF" }, // New API for React Navigation 7
         tabBarStyle: {
-          backgroundColor: "transparent",
+          backgroundColor: "#FFFFFF", // Solid white
           borderTopWidth: 0,
           elevation: 0,
           borderTopColor: "transparent",

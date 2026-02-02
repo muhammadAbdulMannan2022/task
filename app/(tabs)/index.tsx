@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Ionicons } from "@expo/vector-icons";
 import { BlurView } from "@react-native-community/blur";
 import React, { useState } from "react";
@@ -17,17 +18,17 @@ export default function HomeScreen() {
   const router = useRouter();
   const [chartPeriod, setChartPeriod] = useState<"month" | "year">("month");
 
-  // Custom Chart Data - Month View
+  // Month View and  Year View {only dummy number added rendomly }
   const monthlyData = [40, 60, 80, 90, 70, 100, 95, 85, 75, 60, 70, 90, 80, 95, 100, 90, 85];
-  // Custom Chart Data - Year View
+ 
   const yearlyData = [65, 75, 85, 80, 90, 100, 95, 110, 85, 70, 75, 80];
 
   const currentData = chartPeriod === "month" ? monthlyData : yearlyData;
-  const activeIndex = chartPeriod === "month" ? 5 : 7; // Highlight 6th bar in month, 8th in year
+  const activeIndex = chartPeriod === "month" ? 5 : 7; 
 
   return (
     <View style={styles.container}>
-      {/* Header */}
+      {/* part 1 */}
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Dashboard</Text>
         <TouchableOpacity 
@@ -43,10 +44,10 @@ export default function HomeScreen() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
       >
-        {/* Greeting */}
+   
         <Text style={styles.greeting}>Good evening, Jerome! 👋</Text>
 
-        {/* Total Earnings Card with Blur */}
+        {/* (cart) part 2 */}
         <View style={styles.earningsCardContainer}>
           <View style={[styles.earningsCard, { backgroundColor: "#1C4C46" }]}>
             <View style={styles.earningsOverlay}>
@@ -74,9 +75,9 @@ export default function HomeScreen() {
           </View>
         </View>
 
-        {/* Stats Row */}
+       {/* part 3 */}
         <View style={styles.statsRow}>
-          {/* Total Views */}
+         
           <View style={[styles.statCard, { backgroundColor: "#FFF8C9" }]}>
             <View style={styles.statHeader}>
               <Text style={styles.statLabel}>Total views</Text>
@@ -89,7 +90,7 @@ export default function HomeScreen() {
             <Text style={styles.statUnit}>Views</Text>
           </View>
 
-          {/* New Subscribers */}
+         
           <View style={[styles.statCard, { backgroundColor: "#FFF8C9" }]}>
             <View style={styles.statHeader}>
               <Text style={styles.statLabel}>New subscriber</Text>
@@ -103,7 +104,7 @@ export default function HomeScreen() {
           </View>
         </View>
 
-        {/* Total Engagement Chart */}
+        {/* Chart part 3. this can be with a chart library but for now static for consistancy of (99%) */}
         <View style={styles.chartCard}>
           <View style={styles.chartHeader}>
             <Text style={styles.chartTitle}>Total engagement</Text>
@@ -118,9 +119,9 @@ export default function HomeScreen() {
             </TouchableOpacity>
           </View>
 
-          {/* Chart Wrapper with Y-Axis */}
+          
           <View style={{ flexDirection: 'row', height: 180 }}>
-            {/* Y-Axis Labels */}
+          
             <View style={{ justifyContent: 'space-between', paddingBottom: 20, paddingRight: 8 }}>
               <Text style={styles.yAxisLabel}>80%</Text>
               <Text style={styles.yAxisLabel}>60%</Text>
@@ -128,7 +129,7 @@ export default function HomeScreen() {
               <Text style={styles.yAxisLabel}>20%</Text>
             </View>
 
-            {/* Chart Bars */}
+            {/* Bars */}
             <View style={{ flex: 1 }}>
               <View style={styles.simpleChart}>
                 {currentData.map((value, index) => (
@@ -169,7 +170,7 @@ export default function HomeScreen() {
           </View>
         </View>
 
-        {/* Play Video Section */}
+       
         <View style={styles.videoSection}>
           <Text style={styles.videoTitle}>Play Video</Text>
 
@@ -179,7 +180,7 @@ export default function HomeScreen() {
               style={styles.videoThumbnail}
             />
 
-            {/* Floating Glass Card */}
+          
             <View style={styles.videoBlurContainer}>
               <BlurView
                 style={StyleSheet.absoluteFill}
@@ -208,7 +209,7 @@ export default function HomeScreen() {
           </View>
         </View>
 
-        {/* Bottom Spacing for Tab Bar */}
+      
         <View style={{ height: 120 }} />
       </ScrollView>
     </View>

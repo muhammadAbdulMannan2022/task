@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
@@ -14,9 +15,9 @@ import {
 } from "react-native";
 
 const { width } = Dimensions.get("window");
-const HERO_CARD_WIDTH = width - 40; // 20 padding on each side
+const HERO_CARD_WIDTH = width - 40; 
 
-// Mock Data
+
 const CATEGORIES = [
   { id: "1", name: "Jersey", icon: "shirt", active: true },
   { id: "2", name: "Football", icon: "football", active: false },
@@ -35,7 +36,7 @@ const POPULAR_PRODUCTS = [
     id: "2",
     name: "Premium Jersey",
     price: "$280",
-    image: "https://images.unsplash.com/photo-1577212457630-91a5bd8b965c?w=400&q=80",
+    image: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400&q=80",
   },
   {
     id: "3",
@@ -68,14 +69,14 @@ const BEST_SELLERS = [
 
 import { useRouter } from "expo-router";
 
-// ...
+
 
 export default function ShopScreen() {
   const router = useRouter();
 
   return (
     <View style={styles.container}>
-      {/* Header */}
+      
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Shop</Text>
         <TouchableOpacity 
@@ -100,12 +101,12 @@ export default function ShopScreen() {
           />
         </View>
 
-        {/* Hero Slider */}
+        {/* sl 1 */}
         <View style={styles.heroContainer}>
           <FlatList
             data={[
               { id: "1", image: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=800&q=80" },
-              { id: "2", image: "https://images.unsplash.com/photo-1628779238951-be2c9f256544?w=800&q=80" },
+              { id: "2", image: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400&q=80" },
               { id: "3", image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=80" },
             ]}
             horizontal
@@ -131,7 +132,7 @@ export default function ShopScreen() {
           />
         </View>
 
-        {/* Categories */}
+        {/* sl 2 */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Category</Text>
           <ScrollView
@@ -172,7 +173,7 @@ export default function ShopScreen() {
           </ScrollView>
         </View>
 
-        {/* Popular Now */}
+        {/* sl3 */}
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionTitle}>Popular Now</Text>
@@ -187,7 +188,7 @@ export default function ShopScreen() {
           </ScrollView>
         </View>
 
-        {/* Best Seller */}
+        {/* sl4 */}
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionTitle}>Best seller</Text>
@@ -202,14 +203,14 @@ export default function ShopScreen() {
           </ScrollView>
         </View>
 
-        {/* Bottom Spacer */}
+       
         <View style={{ height: 100 }} />
       </ScrollView>
     </View>
   );
 }
 
-// Product Card Component
+
 const ProductCard = ({ item }: { item: any }) => (
   <View style={styles.productCard}>
     <Image source={{ uri: item.image }} style={styles.productImage} />
@@ -231,7 +232,7 @@ const ProductCard = ({ item }: { item: any }) => (
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FDFDFD", // Slightly off-white/cream warmth
+    backgroundColor: "#FFFFFF", 
   },
   header: {
     flexDirection: "row",

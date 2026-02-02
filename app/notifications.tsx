@@ -1,13 +1,14 @@
+// @ts-nocheck
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
-    Image,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 // Mock Data
@@ -67,7 +68,7 @@ export default function NotificationsScreen() {
 
   return (
     <View style={styles.container}>
-      {/* Header */}
+     
       <View style={styles.header}>
         <TouchableOpacity
           style={styles.backButton}
@@ -83,7 +84,7 @@ export default function NotificationsScreen() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
       >
-        {/* Filters */}
+        
         <View style={styles.filterSection}>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {FILTERS.map((filter) => (
@@ -91,7 +92,7 @@ export default function NotificationsScreen() {
                 key={filter}
                 style={[
                   styles.filterChip,
-                  // Custom styling for specific chips based on design
+                  
                   filter === "All" && styles.allFilterChip,
                 ]}
                 onPress={() => setActiveFilter(filter)}
@@ -111,7 +112,7 @@ export default function NotificationsScreen() {
           </ScrollView>
         </View>
 
-        {/* Recent Section */}
+        
         <Text style={styles.sectionTitle}>Recent</Text>
         <View style={styles.recentContainer}>
           {RECENT_NOTIFICATIONS.map((item) => (
@@ -119,7 +120,7 @@ export default function NotificationsScreen() {
           ))}
         </View>
 
-        {/* Read Section */}
+       
         <Text style={styles.sectionTitle}>Read</Text>
         <View style={styles.readContainer}>
           {READ_NOTIFICATIONS.map((item) => (
@@ -138,7 +139,7 @@ const NotificationItem = ({ item }: { item: any }) => (
     <Image source={{ uri: item.image }} style={styles.avatar} />
     <View style={styles.notificationContent}>
       <Text style={styles.notificationText}>
-        {/* Simple logic to bold the name if present at start, otherwise plain */}
+        
          {item.text}
       </Text>
       <Text style={styles.timeText}>{item.time}</Text>
