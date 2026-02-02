@@ -2,7 +2,6 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
-  Dimensions,
   Image,
   KeyboardAvoidingView,
   Platform,
@@ -11,15 +10,12 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
-import LinearGradient from "react-native-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const { width, height } = Dimensions.get("window");
-
 export default function AuthScreen() {
-  const [name, setName] = useState("andrew");
+  const [name, setName] = useState("andrewh");
   const [password, setPassword] = useState("••••••••••••");
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
@@ -31,38 +27,35 @@ export default function AuthScreen() {
   };
 
   return (
-    <LinearGradient colors={["#245550", "#245550"]} style={styles.container}>
+    <View style={styles.container}>
+      <SafeAreaView edges={['top', 'left', 'right']} style={styles.topSection}>
+        <View style={styles.header}>
+          <Text style={styles.welcomeText}>Welcome back Andrew!</Text>
+          <Text style={styles.subText}>
+            Log in to continue where you left off only with one click
+          </Text>
+        </View>
+      </SafeAreaView>
+
       <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-        style={styles.flex}
+        behavior={Platform.OS === "ios" ? "padding" : undefined}
+        style={styles.bottomSection}
       >
         <ScrollView
           contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={false}
+          bounces={false}
         >
-          <SafeAreaView>
-            <View style={styles.header}>
-              <Text style={styles.welcomeText}>Welcome back Andrew!</Text>
-              <Text style={styles.subText}>
-                Log in to continue where you left off only with one click
-              </Text>
-            </View>
-
-            <View style={styles.formContainer}>
-              {/* Name Input */}
+           <View style={styles.formContainer}>
+               {/* Name Input */}
               <View style={styles.inputGroup}>
                 <View style={styles.inputWrapper}>
                   <Image
                     source={require("../assets/icon/mail-01.png")}
                     style={styles.inputIcon}
+                    resizeMode="contain"
                   />
-                  <View
-                    style={{
-                      width: 1,
-                      height: "70%",
-                      backgroundColor: "#D9D9D9",
-                    }}
-                  />
+                  <View style={styles.verticalDivider} />
                   <TextInput
                     style={styles.input}
                     placeholder="Name"
@@ -79,14 +72,9 @@ export default function AuthScreen() {
                   <Image
                     source={require("../assets/icon/lock-password.png")}
                     style={styles.inputIcon}
+                    resizeMode="contain"
                   />
-                  <View
-                    style={{
-                      width: 1,
-                      height: "70%",
-                      backgroundColor: "#D9D9D9",
-                    }}
-                  />
+                  <View style={styles.verticalDivider} />
                   <TextInput
                     style={styles.input}
                     placeholder="Password"
@@ -138,90 +126,84 @@ export default function AuthScreen() {
                 <Text style={styles.loginButtonText}>Log in</Text>
               </TouchableOpacity>
 
+              {/* Spacer to push social buttons to bottom */}
+              <View style={{ flex: 1, minHeight: 20 }} />
+
               {/* Or Sign up with */}
               <View style={styles.dividerContainer}>
                 <Text style={styles.dividerText}>Or Sign up with</Text>
               </View>
 
-              {/* Google Button */}
+              {/* Social Buttons */}
               <TouchableOpacity style={styles.socialButton}>
                 <Image
                   source={require("../assets/icon/google.png")}
                   style={styles.socialIcon}
+                  resizeMode="contain"
                 />
                 <Text style={styles.socialButtonText}>Google</Text>
               </TouchableOpacity>
 
-              {/* Facebook Button */}
               <TouchableOpacity style={styles.socialButton}>
                 <Image
                   source={require("../assets/icon/facebook.png")}
                   style={styles.socialIcon}
+                  resizeMode="contain"
                 />
                 <Text style={styles.socialButtonText}>Facebook</Text>
               </TouchableOpacity>
-            </View>
-          </SafeAreaView>
+           </View>
         </ScrollView>
       </KeyboardAvoidingView>
-    </LinearGradient>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#245550",
+    backgroundColor: "#245550", // Dark Teal Background
+    paddingHorizontal:20,
+    paddingVertical:20
   },
-  keyboardAvoid: {
-    flex: 1,
-  },
-  flex: {
-    flex: 1,
-  },
-  socialIcon: {
-    fontWeight: "700",
-    height: 20,
-    width: 20,
-  },
-  checkmark: {
-    color: "#fff",
-    fontSize: 12,
-    marginTop: -2,
-  },
-  scrollContent: {
-    flexGrow: 1,
-    paddingHorizontal: 20,
-    paddingTop: 60,
+  topSection: {
+    paddingHorizontal: 24,
+    paddingTop: 40,
     paddingBottom: 40,
-    justifyContent: "center",
   },
   header: {
-    marginBottom: 40,
-    alignItems: "center",
+    marginTop: 20,
   },
   welcomeText: {
     fontSize: 28,
     fontWeight: "700",
     color: "#fff",
-    marginBottom: 12,
-    textAlign: "center",
+    marginBottom: 8,
+    textAlign: "left",
   },
   subText: {
     fontSize: 14,
-    color: "#ddd",
-    textAlign: "center",
+    color: "rgba(255,255,255,0.7)",
+    textAlign: "left",
     lineHeight: 20,
+    maxWidth: "80%",
+  },
+  bottomSection: {
+    flex: 1,
+    backgroundColor: "#FFFCEA", // Cream/White color
+    borderRadius:32,
+    overflow: "hidden",
+    display:"flex",
+    justifyContent:"space-between",
+
+  },
+  scrollContent: {
+    flexGrow: 1,
   },
   formContainer: {
-    backgroundColor: "#FFFCEA",
-    borderRadius: 24,
+    flex: 1,
     padding: 24,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 12,
-    elevation: 4,
+    paddingTop: 40,
   },
   inputGroup: {
     marginBottom: 16,
@@ -229,42 +211,50 @@ const styles = StyleSheet.create({
   inputWrapper: {
     flexDirection: "row",
     alignItems: "center",
-    paddingHorizontal: 12,
-    height: 48,
+    paddingHorizontal: 16,
+    height: 56,
     borderWidth: 1,
-    borderColor: "#D9D9D9",
-    borderRadius: 50,
+    borderColor: "#E2E8F0", // Light gray border
+    borderRadius: 28, // Pill shape
+    backgroundColor: "#FFF",
   },
   inputIcon: {
-    marginRight: 10,
+    width: 20,
+    height: 20,
+    marginRight: 12,
+  },
+  verticalDivider: {
+    width: 1,
+    height: 24,
+    backgroundColor: "#E2E8F0",
+    marginRight: 12,
   },
   input: {
     flex: 1,
-    fontSize: 14,
-    color: "#000",
+    fontSize: 15,
+    color: "#334155",
     fontWeight: "500",
   },
   eyeIcon: {
     padding: 8,
-    marginLeft: 8,
   },
   bottomRow: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 24,
-    marginTop: 8,
+    marginBottom: 32,
+    marginTop: 4,
   },
   rememberMeContainer: {
     flexDirection: "row",
     alignItems: "center",
   },
   checkbox: {
-    width: 16,
-    height: 16,
-    borderRadius: 3,
+    width: 18,
+    height: 18,
+    borderRadius: 4,
     borderWidth: 1.5,
-    borderColor: "#ddd",
+    borderColor: "#94A3B8",
     marginRight: 8,
     justifyContent: "center",
     alignItems: "center",
@@ -273,23 +263,34 @@ const styles = StyleSheet.create({
     backgroundColor: "#245550",
     borderColor: "#245550",
   },
-  rememberMeText: {
+  checkmark: {
+    color: "#fff",
     fontSize: 12,
-    color: "#666",
+    marginTop: -2,
+    fontWeight: "bold",
+  },
+  rememberMeText: {
+    fontSize: 13,
+    color: "#475569",
     fontWeight: "500",
   },
   forgotPassword: {
-    fontSize: 12,
-    color: "#245550",
-    fontWeight: "600",
+    fontSize: 13,
+    color: "#245550", // Dark Teal
+    fontWeight: "700",
   },
   loginButton: {
     backgroundColor: "#245550",
-    borderRadius: 12,
-    paddingVertical: 14,
+    borderRadius: 28,
+    height: 56,
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 24,
+    marginBottom: 32,
+    shadowColor: "#245550",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
+    elevation: 4,
   },
   loginButtonText: {
     color: "#fff",
@@ -298,38 +299,32 @@ const styles = StyleSheet.create({
   },
   dividerContainer: {
     alignItems: "center",
-    marginBottom: 16,
+    marginBottom: 24,
   },
   dividerText: {
-    fontSize: 12,
-    color: "#999",
+    fontSize: 13,
+    color: "#94A3B8",
     fontWeight: "500",
   },
   socialButton: {
-    display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    borderRadius: 50,
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-    gap: 8,
     justifyContent: "center",
-    marginBottom: 12,
+    height: 56,
+    borderRadius: 28,
     borderWidth: 1,
-    borderColor: "#D9D9D9",
+    borderColor: "#E2E8F0",
+    marginBottom: 16,
+    backgroundColor: "#FFF",
+  },
+  socialIcon: {
+    width: 24,
+    height: 24,
+    marginRight: 10,
   },
   socialButtonText: {
-    fontSize: 14,
+    fontSize: 15,
     fontWeight: "600",
-    color: "#333",
-  },
-  googleIcon: {
-    fontWeight: "700",
-    marginRight: 8,
-  },
-  facebookIcon: {
-    fontWeight: "700",
-    marginRight: 8,
-    color: "#1877F2",
+    color: "#334155",
   },
 });

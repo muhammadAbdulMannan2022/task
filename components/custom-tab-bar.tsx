@@ -1,5 +1,6 @@
 // BlurView removed due to Android crash issues
 import { Ionicons } from "@expo/vector-icons";
+import { BlurView } from "@react-native-community/blur";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import React from "react";
 import {
@@ -45,6 +46,11 @@ const CustomTabBar = ({
   return (
     <View style={styles.container}>
       <View style={styles.glassContainer}>
+        <BlurView
+          blurType="light"
+          blurAmount={10}
+          style={[StyleSheet.absoluteFill, { borderRadius: 12 }]}
+        />
         {/* Glassmorphism overlay */}
         <View style={styles.glassOverlay} />
         
